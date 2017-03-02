@@ -24,8 +24,10 @@ def crawl(host):
 		name = m.cdpCacheDeviceId[i[0],i[1]]
 		if not name in device_names:
 			device_names[name] = 1
+			print name
 			crawl(name)
 
+if len(sys.argv) != 2:
+	print "Usage: crawlcdp HOST"
+	sys.exit(0)
 crawl(sys.argv[1])
-for key in device_names:
-	print key
